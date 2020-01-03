@@ -20,7 +20,6 @@ void dfs(int x, int y, int FromX,int FromY, char ch)
 }
 int main()
 {
-   fast;
    cin >> r >> c;
    for(int i=0; i<r; i++){
       cin >> s1[i];
