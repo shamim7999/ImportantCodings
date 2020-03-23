@@ -22,7 +22,7 @@ bool check(ll n, ll pos){ return (n&(1<<pos)); }
 bool Set(ll n, ll pos) {  return (n | (1<<pos)); }
 ld LOG(ld b, ld e){ return log(b)/log(e); }
 
-int block, a[mx];
+int block, a[mx], cnt[mx];
 
 struct hello
 {
@@ -54,10 +54,18 @@ void solve()
     int currL=0, currR=0;
     for(int i=0; i<qq; i++){
         int left = q[i].L, right = q[i].R;
-        while(currL<left)   currSum-=a[currL], currL++;
-        while(currL>left)   currSum+=a[currL-1], currL--;
-        while(currR<=right)  currSum+=a[currR], currR++;
-        while(currR>right+1) currSum-=a[currR-1], currR--;
+        while(currL<left){
+            currSum-=a[currL], currL++;
+        }
+        while(currL>left){
+            currSum+=a[currL-1], currL--;
+        }   
+        while(currR<=right){
+              currSum+=a[currR], currR++;
+        }
+        while(currR>right+1){
+             currSum-=a[currR-1], currR--;
+        }
 
         cout << currSum << "\n";
     }
