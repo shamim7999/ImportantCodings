@@ -23,12 +23,26 @@ bool Set(ll n, ll pos) {  return (n | (1<<pos)); }
 ld LOG(ld b, ld e){ return log(b)/log(e); }
 
 vector <int> v1[mx],v2[mx];
-int st[mx],en[mx], cnt=1;
+int st[mx],en[mx], cnt=1, par[mx], level[mx];
 bitset <mx> b1,b2;
 
-void dfs1(int u)
+void dfs2(int u,int p,int lvl) /// Technique 2
 {
-    st[u]=cnt++; /// 11
+    par[u]=p;
+    level[u]=lvl;
+    st[u]=cnt++;
+
+    for(auto it : v1[u])
+    {
+        if(it == p)continue;
+        dfs(it,u,lvl+1);
+    }
+    en[u]=cnt++;
+}
+
+void dfs1(int u) 		/// Technique 1
+{
+    st[u]=cnt++; 
     b1[u]=1;
     for(auto it : v1[u]){
         if(!b1[it]){
