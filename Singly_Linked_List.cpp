@@ -159,6 +159,10 @@ void deleteAhead()
 
 void deleteLast()
 {
+    if(tot == 1){
+         deleteAhead();
+         return;
+    }
     if(root == NULL){
         cout << "No Elements.\n";
         return;
