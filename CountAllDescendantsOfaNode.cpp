@@ -54,11 +54,11 @@ void bfs(int start)
 
 void solve(int kk)
 {
-    int n,k;
-    cin >> n >> k;
-    for(int i=0,a,b; i<n-1; i++) cin >> a >> b, v[a].pb(b), v[b].pb(a);
+    int n,edge;
+    cin >> n >> edge;
+    for(int i=0,a,b; i<edge; i++) cin >> a >> b, v[a].pb(b), v[b].pb(a);
     bfs(1);
-
+    
     for(int i=sz-1; i>=0; i--){
 
         for(auto u : level[i]){
