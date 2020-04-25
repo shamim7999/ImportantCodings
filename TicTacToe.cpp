@@ -193,3 +193,4 @@ int main()
    return 0;
 }// 20ph671m
 
+///https://codeforces.com/contest/1341/problem/D
