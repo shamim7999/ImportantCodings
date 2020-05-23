@@ -13,8 +13,6 @@ using namespace __gnu_pbds;
 #define ef emplace_front
 #define em emplace
 #define pf push_front
-#define ppb pop_back
-#define ppf pop_front
 #define ll long long
 #define ull unsigned long long
 #define ld long double
