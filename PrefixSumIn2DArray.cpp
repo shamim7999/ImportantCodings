@@ -76,10 +76,21 @@ int main()
     //freopen("text2.txt", "w", stdout);
     fast;
     int kk = 0;
-    cin >> tc;
+    //cin >> tc;
     //scanf("%d", &tc);
     while (++kk <= tc)
         solve(kk);
 
     return 0;
 }
+/*
+
+Example
+
+4 4
+2 0 -3 4
+6 3 2 -1
+5 4 7 3
+2 -6 8 1
+
+*/
