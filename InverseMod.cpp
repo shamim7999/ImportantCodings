@@ -21,28 +21,21 @@ using namespace std;
 #define Set(n, pos) (n | (1<<pos))
 #define PI acos(-1)
 
-ll BigMod(ll x, unsigned ll y)
+ll bigmod(ll e, ll x)
 {
-    ll res = 1;
-
-    x = x % mod;
-
-    while (y > 0)
-    {
-        if (y & 1)
-            res = (res*x) % mod;
-        y = y>>1;
-        x = (x*x) % mod;
-    }
-    return res;
+    if(!x)return 1;
+    ll p=bigmod(e,x/2);
+    p=(p*p)%mod;
+    if(x%2)p=(p*e)%mod;
+    return p;
 }
-ll ModInverse(ll n){return BigMod(n,mod-2)%mod;}
+ll ModInverse(ll x){return bigmod(x,mod-2)%mod;}
 
 int main()
 {
     ll a,b;
     cin >> a >> b;
-    cout << BigMod(a,b) << "\n";
+    cout << bigmod(a,b) << "\n";
 
     return 0;
 }
