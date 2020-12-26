@@ -35,7 +35,7 @@ void dfs2(int u,int p,int lvl) /// Technique 2
     for(auto it : v1[u])
     {
         if(it == p)continue;
-        dfs(it,u,lvl+1);
+        dfs2(it,u,lvl+1);
     }
     en[u]=cnt++;
 }
