@@ -1,42 +1,57 @@
-//Cycle Detection
 #include<bits/stdc++.h>
-char s1[60][60];
-bool vis[60][60];
-int r,c;
+using namespace std;
+ 
+#define mx 200005
+#define ll long long
+#define mod 1000000007
+
+#define WHITE 0
+#define GRAY 1
+#define BLACK 2
+
+vector <int> v[mx]; 
+
+int n, e, color[mx];
+
 bool ok;
 
-void dfs(int x, int y, int FromX,int FromY, char ch)
+
+void dfs(int node, int par)
 {
-    if(x<0 || y<0 || x>=r || y>=c || s1[x][y]!=ch) return;
-    if(vis[x][y] == 1){
-        ok=1;
-        return;
-    }
-    vis[x][y]=1;
-    if(x+1!=FromX || y!=FromY) dfs(x+1,y,x,y,ch);
-    if(x-1!=FromX || y!=FromY) dfs(x-1,y,x,y,ch);
-    if(x!=FromX || y+1!=FromY) dfs(x,y+1,x,y,ch);
-    if(x!=FromX || y-1!=FromY) dfs(x,y-1,x,y,ch);
+	if(color[node] == BLACK)
+		return;
+	color[node] = GRAY;
+	for(auto it : v[node]){
+		if(it == par)
+			continue;
+		if(color[it] == WHITE){
+			color[it] = GRAY;
+			dfs(it, node);
+		}
+		if(color[it] == GRAY)
+			ok=1;
+	}
+	color[node] = BLACK;
+
 }
+void solve()
+{
+	cin >> e;
+	for(int i=1, x, y; i<=e; i++){
+		cin >> x >> y;
+		v[x].push_back(y);
+		v[y].push_back(x);
+	}
+
+	dfs(1, -1);
+
+	ok ? cout << "Cycle Exists\n" : cout << "Cycle Doesn't Exist\n";
+}
+ 
 int main()
 {
-   cin >> r >> c;
-   for(int i=0; i<r; i++){
-      cin >> s1[i];
-   }
-   for(int i=0; i<r; i++){
-       for(int j=0; j<c; j++){
-           if(!vis[i][j]){
-               dfs(i,j,i,j,s1[i][j]);
-           }
-           if(ok){
-              cout << "Yes\n";
-              return 0;
-           }
-       }
-   }
-
-    cout << "No\n";
-
-   return 0;
+	int t=1;
+	//scanf("%d",&t);
+	while(t--)solve();
+	return 0;
 }
