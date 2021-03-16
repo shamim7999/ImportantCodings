@@ -8,6 +8,36 @@ map <string,int> mp1;
 unordered_map <int,int> dis;
  
 int node,edge;
+
+void Dijkstra1(int u)
+{
+	priority_queue<pair<ll,int>>pq1;
+	pq1.push({0,u});
+	//int cnt=0;
+	while(!pq1.empty())
+	{
+		//if(cnt>100)break;
+		u=pq1.top().second;
+		
+		ll w=-pq1.top().first;
+		pq1.pop();
+		if(dist1[u]<w)continue;
+		//cout<<u<<" "<<w<<endl;
+		for(auto it:g[u])
+		{
+			int v=it.first;
+			ll x=it.second;
+			if(dist1[v]>x+w)
+			{
+				dist1[v]=x+w;
+				//cout<<v<<endl;
+				pq1.push({-dist1[v],v});
+			}
+		}
+		//cnt++;
+	}
+}
+
  
 void dijkstra(int src)
 {
