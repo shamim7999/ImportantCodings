@@ -1,4 +1,6 @@
 // Copied from Ashraful Haque ----> CF handle - ash_98
+/// check from https://www.hackerrank.com/contests/adobe-hackathon/challenges/bokam-and-his-gcd
+/// https://toph.co/arena?contest=coding-fever-round-01#!/p/gcd-probability
 
 #include<bits/stdc++.h>
 using namespace std;
