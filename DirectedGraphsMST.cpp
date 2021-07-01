@@ -55,3 +55,4 @@ int dmst(vector<edge> &edges, int root) { // 0 base node 0 to n-1
     }
     return ans;
 }
+/// Thanks goes to Rayhan Dhruboo, Anik Sarker vai and Ashraful Haque(JnU).
