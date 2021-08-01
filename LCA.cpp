@@ -89,9 +89,10 @@ void solve()
     memo(par, -1);
     memo(level,-1);
     dfs(1,-1);
-    for(int j=1; j<=20; j++){
+    for(int j=1; j<=17; j++){
         for(int i=1; i<=n; i++){
             if(par[i][j-1]!=-1) par[i][j] = par[par[i][j-1]][j-1];
+            else par[i][j]=-1;
         }
     }
 }
