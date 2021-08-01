@@ -18,6 +18,8 @@ using namespace std;
 #define fast ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0)
 #define memo(Array,val) memset(Array, val, sizeof Array)
 #define PI acos(-1)
+#define LOGG 18
+
 bool check(ll n, ll pos){ return (n&(1<<pos)); }
 bool Set(ll n, ll pos) {  return (n | (1<<pos)); }
 ld LOG(ld e, ld b){ return log(e)/log(b); }
@@ -44,7 +46,19 @@ int lca(int u, int v)
     }
     return u;
 }
-
+int kth_parent2(int u,int k)
+{
+    for(int i=LOGG-1;i>=0;i--)
+    {
+        if(k>=(1<<i))
+        {
+            k-=(1<<i);
+            u=par[u][i];
+        }
+        if(u==0)return u;
+    }
+    return u;
+}
 int kth_parent(int u, int k)
 {
     while(k>0){
