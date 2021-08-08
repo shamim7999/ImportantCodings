@@ -26,7 +26,7 @@ ld LOG(ld e, ld b){ return log(e)/log(b); }
 
 vector <int> g[mx];
 int par[mx][22],level[mx];
-
+/*
 int lca(int u, int v)
 {
     if(level[u]<level[v]) swap(u,v);
@@ -45,6 +45,37 @@ int lca(int u, int v)
         u = par[u][cc], v = par[v][cc];
     }
     return u;
+}*/
+
+int lca(int u,int v)
+{
+    if(depth[u]<depth[v])swap(u,v);
+    int LOGG=1;
+    while(1)
+    {
+        int next=LOGG+1;
+        if(depth[u]<(1<<next))break;
+        LOGG++;
+    }
+
+    for(int i=LOGG;i>=0;i--)
+    {
+        if(depth[u]-(1<<i)>=depth[v])
+        {
+            u=par[u][i];
+        }
+    }
+    if(u==v)return u;
+
+    for(int i=LOGG;i>=0;i--)
+    {
+        if(par[u][i]!=-1 && par[u][i]!=par[v][i])
+        {
+            u=par[u][i];
+            v=par[v][i];
+        }
+    }
+    return par[v][0];
 }
 
 
