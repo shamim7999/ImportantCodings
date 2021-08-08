@@ -46,6 +46,8 @@ int lca(int u, int v)
     }
     return u;
 }
+
+
 int kth_parent2(int u,int k)
 {
     for(int i=LOGG-1;i>=0;i--)
