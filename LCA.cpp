@@ -49,25 +49,25 @@ int lca(int u, int v)
 
 int lca(int u,int v)
 {
-    if(depth[u]<depth[v])swap(u,v);
-    int LOGG=1;
+    if(level[u]<level[v])swap(u,v);
+    int LOGGG=1;
     while(1)
     {
-        int next=LOGG+1;
-        if(depth[u]<(1<<next))break;
-        LOGG++;
+        int next=LOGGG+1;
+        if(level[u]<(1<<next))break;
+        LOGGG++;
     }
 
-    for(int i=LOGG;i>=0;i--)
+    for(int i=LOGGG;i>=0;i--)
     {
-        if(depth[u]-(1<<i)>=depth[v])
+        if(level[u]-(1<<i)>=level[v])
         {
             u=par[u][i];
         }
     }
     if(u==v)return u;
 
-    for(int i=LOGG;i>=0;i--)
+    for(int i=LOGGG;i>=0;i--)
     {
         if(par[u][i]!=-1 && par[u][i]!=par[v][i])
         {
