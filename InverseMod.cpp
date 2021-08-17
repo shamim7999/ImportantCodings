@@ -21,6 +21,16 @@ using namespace std;
 #define Set(n, pos) (n | (1<<pos))
 #define PI acos(-1)
 
+int inv[mx];
+void invCalc()
+{
+    inv[1] = 1;
+    for(int i=2; i<=n; i++){
+        inv[i] = (-(mod/i) * inv[mod%i]) % mod;
+        inv[i]+=mod;
+    }
+}
+
 ll bigmod(ll e, ll x)
 {
     if(!x)return 1;
