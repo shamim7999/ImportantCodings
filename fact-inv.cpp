@@ -1,3 +1,4 @@
+#define N 200005
 int fact[N], inv[N];
 
 int bigmod(int e, int x)
@@ -8,7 +9,7 @@ int bigmod(int e, int x)
     if(x%2)p=(p*e)%mod;
     return p;
 }
-
+ 
 void calc()
 {
         fact[0] = 1;
@@ -19,4 +20,13 @@ void calc()
         
         for(int i = N - 2; i >= 0; i--)
             inv[i] = 1ll * inv[i + 1] * (i + 1) % mod;
+}
+
+int norm(int x)
+{
+    if(x>=mod)
+        x%=mod;
+    if(x<0)
+        x+=mod;
+    return x;
 }
