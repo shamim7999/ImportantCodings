@@ -23,9 +23,10 @@ int search_prefix(string s1)
 {
    int now=1;
    for(int i=0; s1[i]; i++){
-      int id = s1[i]-'a';
+      int id = s1[i]-'0';
       if(!node[now][id])
          return 0;
+      now = node[now][id];  
    }
    return cur[now];
 }
