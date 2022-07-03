@@ -31,16 +31,24 @@ void invCalc()
     }
 }
 
-ll bigmod(ll e, ll x)
+int norm(int x)
+{
+   if(x>=mod)
+      x%=mod;
+   if(x<0)
+      x+=mod;
+   return x;
+}
+int bigmod(int e, int x)
 {
     if(!x)return 1;
-    ll p=bigmod(e,x/2);
-    p=(p*p)%mod;
-    if(x%2)p=(p*e)%mod;
-    return p;
+    int p=bigmod(e,x/2);
+    p= norm(norm(p)*norm(p));
+    if(x%2)
+      p = norm(norm(p)*norm(e));
+    return norm(p);
 }
-ll ModInverse(ll x){return bigmod(x,mod-2)%mod;}
-
+int ModInverse(int x){return bigmod(x,mod-2)%mod;}
 int main()
 {
     ll a,b;
