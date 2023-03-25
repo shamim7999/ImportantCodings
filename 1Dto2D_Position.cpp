@@ -1,4 +1,4 @@
-//// given (r x c matrix) and position in array.. find appropriate index ( X x Y)..
+//// given (r x c matrix) and position in array.. find appropriate index ( X x Y).. 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
 
 int ff(int x, int y)
 {
