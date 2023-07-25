@@ -21,4 +21,10 @@ func main() {
 	s2 = getline(s2)
 	s2 = s1 + " " + s2
 	fmt.Println(s2)
+
+	/////////////////////////////// another Easy way //////////////////////////
+
+	in := bufio.NewScanner(os.Stdin)
+	in.Scan()
+	s1:=in.Text()
 }
